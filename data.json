@@ -1,0 +1,35 @@
+{
+  "iot": [
+    {
+      "id": "esp32-smart-home",
+      "title": "ESP32 Smart Home Node",
+      "description": "Module thu thập dữ liệu cảm biến và điều khiển relay, tích hợp sẵn MQTT cho Home Assistant.",
+      "hasFlasher": true,
+      "manifest": "manifest.json"
+    }
+  ],
+  "embedded": [
+    {
+      "id": "macro-pad-9",
+      "title": "Macro Pad 9 Nút (YD-RP2040)",
+      "description": "Bàn phím phụ 9 nút thiết kế tối giản. Firmware tích hợp chuẩn Vial, tùy chỉnh phím trực tiếp trên trình duyệt.",
+      "features": [
+        "🎯 Giao diện Vial: Cấu hình qua WebHID",
+        "🔄 Multi-layer: Hỗ trợ Win, Mac/iPad",
+        "⚡ Tiện ích: Macro 1 chạm Copy, Paste"
+      ],
+      "steps": [
+        {
+          "stepTitle": "Sơ Đồ Hàn Dây",
+          "content": "Hàn trực tiếp các switch vào chân GPIO của mạch YD-RP2040.",
+          "code": "Switch 1-9 -> Chân GP2 đến GP10\nTất cả chân còn lại nối chung vào GND"
+        },
+        {
+          "stepTitle": "Tải File Firmware",
+          "content": "Tải tệp firmware định dạng .uf2 đã được biên dịch sẵn.",
+          "link": { "url": "link-file.uf2", "text": "⬇️ Tải Firmware (.uf2)" }
+        }
+      ]
+    }
+  ]
+}
