@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm Anh Già | Bàn phím Custom 9 Nút YD-RP2040</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1a1b1e; /* Màu Xám tối */
+            --text-main: #e4e5e8;
+            --brand-orange: #ff7300; /* Màu Cam thương hiệu */
+            --brand-grey: #34353a;
+            --glass-bg: rgba(52, 53, 58, 0.6);
+            --glass-border: rgba(255, 115, 0, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-image: linear-gradient(135deg, rgba(255, 115, 0, 0.03) 0%, transparent 50%);
+        }
+
+        h1, h2, h3, .terminal { font-family: 'Fira Code', monospace; }
+        .text-orange { color: var(--brand-orange); }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px dashed var(--brand-grey);
+            padding-bottom: 2rem;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .features-list li {
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-left: 3px solid var(--brand-orange);
+            border-radius: 4px;
+        }
+
+        /* Timeline cho các bước thực hiện */
+        .step {
+            display: flex;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            background: var(--brand-orange);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-right: 1.5rem;
+            z-index: 2;
+        }
+
+        .step-content {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--brand-grey);
+            padding: 1.5rem;
+            border-radius: 8px;
+            flex-grow: 1;
+        }
+
+        .step-content h3 { margin-bottom: 1rem; color: #fff; }
+
+        .code-block {
+            background: #000;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            color: #a9b7c6;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: var(--brand-orange);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-download:hover {
+            background: #e66a00;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+            text-decoration: none;
+            border: 1px solid var(--brand-grey);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        .back-link:hover { border-color: var(--brand-orange); color: var(--brand-orange); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html#embedded" class="back-link">← Quay lại Tiệm Anh Già</a>
+        
+        <header>
+            <h1>Macro Pad <span class="text-orange">9 Nút</span></h1>
+            <p>Vi điều khiển: <strong>YD-RP2040</strong> (Hệ sinh thái Raspberry Pi Pico)</p>
+        </header>
+
+        <div class="glass-card">
+            <h2>Về Dự Án Này</h2>
+            <p>Dự án bàn phím phụ (Macro Pad) thiết kế 9 nút tối giản, sử dụng mạch YD-RP2040. Được tinh chỉnh với firmware chuẩn thương mại, thiết bị hoạt động cực kỳ ổn định chuẩn HID và có khả năng thay đổi chức năng trực tiếp trên trình duyệt web mà không cần cài đặt phần mềm nặng nề.</p>
+            
+            <ul class="features-list">
+                <li>🎯 <strong>Giao diện Vial:</strong> Cấu hình trực tiếp qua WebHID trên vial.rocks.</li>
+                <li>🔄 <strong>Đa nền tảng (Layers):</strong> Tích hợp sẵn layer riêng cho Windows, Mac/iPad, và bàn phím số (Numpad).</li>
+                <li>⚡ <strong>Macro Thông Minh:</strong> Phím bấm 1 chạm cho Copy, Paste, Select All cực kỳ tiện dụng.</li>
+                <li>🛠️ <strong>Ổn định:</strong> Nhận diện cổng USB mượt mà, độ trễ cực thấp.</li>
+            </ul>
+        </div>
+
+        <h2 style="margin: 3rem 0 1.5rem; border-bottom: 1px solid var(--brand-grey); padding-bottom: 1rem;">Hướng Dẫn Thực Hiện Từng Bước</h2>
+
+        <!-- Bước 1 -->
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>Sơ Đồ Hàn Dây (Wiring Diagram)</h3>
+                <p>Do bàn phím chỉ có 9 nút, phương pháp hàn trực tiếp (Direct Pin) vào chân GPIO là ổn định và dễ thao tác nhất. Tất cả các Switch sẽ chung 1 chân nối vào <strong>GND</strong>, chân còn lại nối vào mạch.</p>
+                <div class="code-block">
+Switch 1  -> Chân GP2
+Switch 2  -> Chân GP3
+Switch 3  -> Chân GP4
+Switch 4  -> Chân GP5
+...
+Switch 9  -> Chân GP10
+Chân GND của tất cả 9 Switch -> Nối chung vào chân GND trên YD-RP2040
+                </div>
+            </div>
+        </div>
+
+        <!-- Bước 2 -->
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>Tải File Firmware Đã Build Sẵn</h3>
+                <p>Tôi đã biên dịch sẵn firmware chuẩn định dạng UF2 có hỗ trợ Vial. Bạn không cần phải code, chỉ cần tải về.</p>
+                <a href="link-toi-file-firmware-cua-ban.uf2" class="btn-download">⬇️ Tải Firmware (.uf2)</a>
+            </div>
+        </div>
+
+        <!-- Bước 3 -->
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>Nạp Code Cho YD-RP2040 (Pi Pico)</h3>
+                <p>Không cần phần mềm rườm rà, quá trình nạp chỉ mất 10 giây:</p>
+                <ol style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li>Nhấn và <strong>giữ nguyên nút BOOT</strong> (hoặc BOOTSEL) trên mạch YD-RP2040.</li>
+                    <li>Cắm cáp USB Type-C từ mạch vào máy tính.</li>
+                    <li>Thả nút BOOT ra. Lúc này trên máy tính sẽ xuất hiện một ổ đĩa USB mới tên là <code>RPI-RP2</code>.</li>
+                    <li>Copy file <code>.uf2</code> bạn vừa tải ở Bước 2 và dán (Paste) vào ổ đĩa <code>RPI-RP2</code>.</li>
+                    <li>Mạch sẽ tự động khởi động lại và máy tính sẽ nhận diện đây là một bàn phím mới!</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Bước 4 -->
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3>Cấu Hình Phím Trên Vial.rocks</h3>
+                <p>Nhờ giao thức WebHID, bạn có thể thiết lập các layer (Win/Mac), đổi phím hoặc tạo combo Copy/Paste trực tiếp qua trình duyệt web.</p>
+                <ol style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li>Mở trình duyệt Google Chrome, Edge hoặc Brave (hỗ trợ WebHID).</li>
+                    <li>Truy cập vào trang: <a href="https://vial.rocks" target="_blank" class="text-orange"><strong>vial.rocks</strong></a></li>
+                    <li>Bấm nút <strong>Start Vial</strong>. Trình duyệt sẽ hiện cửa sổ yêu cầu cấp quyền kết nối, hãy chọn bàn phím của bạn và bấm <strong>Kết nối (Connect)</strong>.</li>
+                    <li>Giao diện bàn phím 9 nút sẽ hiện ra. Bạn chỉ cần click vào nút trên màn hình và chọn phím chức năng tương ứng bên dưới để thay đổi. Cấu hình sẽ được lưu trực tiếp vào bộ nhớ của mạch!</li>
+                </ol>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>
