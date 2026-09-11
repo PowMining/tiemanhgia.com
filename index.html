@@ -5,134 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiệm Anh Già - Hardware & Server</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font chữ đậm chất IT -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- ESP Web Tools -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
 </head>
 <body>
     <header class="glass-header">
-        <div class="logo">
-            <span class="cmd-prompt">root@tiemanhgia:~#</span> Tiệm Anh Già
-        </div>
+        <div class="logo"><span class="cmd-prompt">root@tiemanhgia:~#</span> Tiệm Anh Già</div>
         <nav>
             <ul id="menu">
                 <li><a href="#" data-target="home" class="active">Trang chủ</a></li>
                 <li><a href="#" data-target="iot">Dự án IOT</a></li>
                 <li><a href="#" data-target="embedded">Dự án Nhúng</a></li>
-                <li><a href="#" data-target="server">Server/NAS</a></li>
-                <li><a href="#" data-target="about">Giới thiệu</a></li>
-                <li><a href="#" data-target="donate">Ủng hộ</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="app-content">
-        <!-- Section Trang chủ -->
+        <!-- Section Home -->
         <section id="home" class="content-section active">
             <h1>Welcome to <span class="highlight">Tiệm Anh Già</span></h1>
-            <p>Nơi lưu trữ và chia sẻ các dự án tự động hóa, IOT, hệ thống nhúng và kiến trúc Server/NAS.</p>
-            <div class="terminal-box">
-                <p>> Khởi tạo hệ thống...</p>
-                <p>> Tải module ESP32... [OK]</p>
-                <p>> Sẵn sàng kết nối Web Serial!</p>
-            </div>
         </section>
 
-        <!-- Section Dự án IOT -->
+        <!-- Section IOT -->
         <section id="iot" class="content-section">
             <h2>Dự án IOT</h2>
-            <div class="grid-container">
-                <div class="glass-card">
-                    <h3>ESP32 Smart Home Node</h3>
-                    <p>Module thu thập dữ liệu cảm biến và điều khiển relay, tích hợp sẵn MQTT cho Home Assistant.</p>
-                    <div class="flash-area">
-                        <p class="warning">Cắm cáp USB vào ESP32 trước khi nạp!</p>
-                        <esp-web-install-button manifest="manifest.json"></esp-web-install-button>
-                    </div>
-                </div>
+            <div id="iot-container" class="grid-container">
+                <!-- Dữ liệu sẽ được JS render vào đây -->
             </div>
         </section>
 
-        <!-- Section Dự án Nhúng (Tích hợp chi tiết Bàn phím Custom YD-RP2040) -->
+        <!-- Section Nhúng -->
         <section id="embedded" class="content-section">
-            <h2>Dự án Nhúng: Macro Pad 9 Nút (YD-RP2040)</h2>
-            
-            <div class="glass-card" style="margin-bottom: 2rem; border-left: 3px solid #ff7300;">
-                <h3>Tổng Quan Dự Án</h3>
-                <p>Bàn phím phụ (Macro Pad) 9 nút thiết kế tối giản, sử dụng mạch <strong>YD-RP2040</strong>. Firmware tích hợp chuẩn Vial, cho phép tùy chỉnh phím trực tiếp trên trình duyệt mà không cần cài phần mềm phức tạp.</p>
-                <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                    <li style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 6px;">🎯 <strong>Giao diện Vial:</strong> Cấu hình qua WebHID tại vial.rocks</li>
-                    <li style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 6px;">🔄 <strong>Multi-layer:</strong> Hỗ trợ Win, Mac/iPad, Numpad</li>
-                    <li style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 6px;">⚡ <strong>Tiện ích:</strong> Macro 1 chạm Copy, Paste, Select All</li>
-                </ul>
-            </div>
-
-            <div class="embedded-steps">
-                <h3 style="color: #fff; margin-bottom: 1.5rem; font-family: 'Fira Code', monospace;">>> Hướng Dẫn Thực Hiện Từng Bước</h3>
-                
-                <!-- Bước 1 -->
-                <div class="glass-card" style="margin-bottom: 1.5rem;">
-                    <h4 style="color: #ff7300; margin-bottom: 0.5rem;">Bước 1: Sơ Đồ Hàn Dây (Wiring Diagram)</h4>
-                    <p>Hàn trực tiếp (Direct Pin) các switch vào chân GPIO của mạch YD-RP2040. Tất cả chân GND của switch nối chung vào chân GND trên mạch.</p>
-                    <code style="display:block; background:#000; padding:0.8rem; border-radius:6px; margin-top:0.8rem; color:#3fb950; font-family:'Fira Code', monospace;">
-Switch 1-9 -> Chân GP2 đến GP10<br>
-Tất cả chân còn lại của Switch -> Nối chung vào chân GND
-                    </code>
-                </div>
-
-                <!-- Bước 2 -->
-                <div class="glass-card" style="margin-bottom: 1.5rem;">
-                    <h4 style="color: #ff7300; margin-bottom: 0.5rem;">Bước 2: Tải File Firmware</h4>
-                    <p>Tải tệp firmware định dạng `.uf2` đã được biên dịch sẵn hỗ trợ sẵn Vial:</p>
-                    <a href="link-toi-file-firmware.uf2" class="btn-outline" style="display:inline-block; text-decoration:none; margin-top:0.8rem;">⬇️ Tải Firmware (.uf2)</a>
-                </div>
-
-                <!-- Bước 3 -->
-                <div class="glass-card" style="margin-bottom: 1.5rem;">
-                    <h4 style="color: #ff7300; margin-bottom: 0.5rem;">Bước 3: Nạp Code Cho Mạch YD-RP2040</h4>
-                    <ol style="margin-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
-                        <li>Nhấn và <strong>giữ nút BOOT</strong> trên mạch YD-RP2040.</li>
-                        <li>Cắm cáp USB kết nối mạch với máy tính, sau đó thả nút BOOT.</li>
-                        <li>Ổ đĩa ảo mang tên <code>RPI-RP2</code> sẽ xuất hiện trên máy tính.</li>
-                        <li>Kéo thả hoặc Copy file <code>.uf2</code> vừa tải vào ổ đĩa này. Mạch sẽ tự khởi động lại thành bàn phím.</li>
-                    </ol>
-                </div>
-
-                <!-- Bước 4 -->
-                <div class="glass-card">
-                    <h4 style="color: #ff7300; margin-bottom: 0.5rem;">Bước 4: Cấu Hình Phím Trên Vial</h4>
-                    <ol style="margin-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
-                        <li>Sử dụng trình duyệt Chrome hoặc Edge truy cập: <a href="https://vial.rocks" target="_blank" style="color: #58a6ff;">vial.rocks</a></li>
-                        <li>Bấm <strong>Start Vial</strong>, chọn thiết bị bàn phím của bạn và bấm <strong>Connect</strong>.</li>
-                        <li>Tùy chỉnh các layer, gán phím nóng macro theo ý muốn trực tiếp trên giao diện web.</li>
-                    </ol>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Server / NAS -->
-        <section id="server" class="content-section">
-            <h2>Kiến trúc Server & NAS</h2>
-            <div class="glass-card">
-                <h3>Homelab Infrastructure</h3>
-                <p>Chia sẻ cấu hình Docker, PostgreSQL, quản lý mạng bằng Cloudflare Tunnels và thiết lập Linux Router.</p>
-                <code>docker-compose up -d</code>
-            </div>
-        </section>
-
-        <!-- Section Giới thiệu -->
-        <section id="about" class="content-section">
-            <h2>Về Tiệm Anh Già</h2>
-            <p>Góc nhỏ chia sẻ đam mê về lập trình, quản trị hệ thống, in 3D và tối ưu hóa phần cứng.</p>
-        </section>
-
-        <!-- Section Ủng hộ -->
-        <section id="donate" class="content-section">
-            <h2>Ủng Hộ Dự Án</h2>
-            <div class="glass-card text-center">
-                <p>Nếu các dự án firmware này giúp ích cho bạn, hãy mời tôi một ly cafe!</p>
-                <button class="btn-primary" style="background:#ff7300; border:none; padding:0.6rem 1.2rem; color:#fff; border-radius:6px; cursor:pointer; margin-top:1rem;">Buy me a coffee</button>
+            <h2>Dự án Nhúng</h2>
+            <div id="embedded-container">
+                <!-- Dữ liệu sẽ được JS render vào đây -->
             </div>
         </section>
     </main>
