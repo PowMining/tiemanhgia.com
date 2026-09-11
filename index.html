@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm Anh Già - Hardware & Server</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font chữ đậm chất IT -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- ESP Web Tools -->
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+</head>
+<body>
+    <header class="glass-header">
+        <div class="logo">
+            <span class="cmd-prompt">root@tiemanhgia:~#</span> Tiệm Anh Già
+        </div>
+        <nav>
+            <ul id="menu">
+                <li><a href="#" data-target="home" class="active">Trang chủ</a></li>
+                <li><a href="#" data-target="iot">Dự án IOT</a></li>
+                <li><a href="#" data-target="embedded">Dự án Nhúng</a></li>
+                <li><a href="#" data-target="server">Server/NAS</a></li>
+                <li><a href="#" data-target="about">Giới thiệu</a></li>
+                <li><a href="#" data-target="donate">Ủng hộ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="app-content">
+        <!-- Section Trang chủ -->
+        <section id="home" class="content-section active">
+            <h1>Welcome to <span class="highlight">Tiệm Anh Già</span></h1>
+            <p>Nơi lưu trữ và chia sẻ các dự án tự động hóa, IOT, hệ thống nhúng và kiến trúc Server/NAS.</p>
+            <div class="terminal-box">
+                <p>> Khởi tạo hệ thống...</p>
+                <p>> Tải module ESP32... [OK]</p>
+                <p>> Sẵn sàng kết nối Web Serial!</p>
+            </div>
+        </section>
+
+        <!-- Section Dự án IOT -->
+        <section id="iot" class="content-section">
+            <h2>Dự án IOT</h2>
+            <div class="grid-container">
+                <!-- Thẻ dự án dùng Glassmorphism -->
+                <div class="glass-card">
+                    <h3>ESP32 Smart Home Node</h3>
+                    <p>Module thu thập dữ liệu cảm biến và điều khiển relay, tích hợp sẵn MQTT cho Home Assistant.</p>
+                    <div class="flash-area">
+                        <p class="warning">Cắm cáp USB vào ESP32 trước khi nạp!</p>
+                        <esp-web-install-button manifest="manifest.json"></esp-web-install-button>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <h3>Cảm biến Môi trường BLE</h3>
+                    <p>Sử dụng ESP32 làm BLE Tracker kết nối với hệ thống nội bộ.</p>
+                    <button class="btn-outline">Xem Chi Tiết (Sắp ra mắt)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Dự án Nhúng -->
+        <section id="embedded" class="content-section">
+            <h2>Dự án Nhúng</h2>
+            <p>Các giải pháp firmware custom, tích hợp vi điều khiển và phần cứng tự động hóa.</p>
+            <!-- Thêm nội dung tương tự IOT -->
+        </section>
+
+        <!-- Section Server / NAS -->
+        <section id="server" class="content-section">
+            <h2>Kiến trúc Server & NAS</h2>
+            <div class="glass-card">
+                <h3>Homelab Infrastructure</h3>
+                <p>Chia sẻ cấu hình Docker, PostgreSQL, quản lý mạng bằng Cloudflare Tunnels và thiết lập Linux Router.</p>
+                <code>docker-compose up -d</code>
+            </div>
+        </section>
+
+        <!-- Section Giới thiệu -->
+        <section id="about" class="content-section">
+            <h2>Về Tiệm Anh Già</h2>
+            <p>Góc nhỏ chia sẻ đam mê về lập trình, quản trị hệ thống, in 3D và tối ưu hóa phần cứng.</p>
+        </section>
+
+        <!-- Section Ủng hộ -->
+        <section id="donate" class="content-section">
+            <h2>Ủng Hộ Dự Án</h2>
+            <div class="glass-card text-center">
+                <p>Nếu các dự án firmware này giúp ích cho bạn, hãy mời tôi một ly cafe!</p>
+                <button class="btn-primary">Buy me a coffee</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
